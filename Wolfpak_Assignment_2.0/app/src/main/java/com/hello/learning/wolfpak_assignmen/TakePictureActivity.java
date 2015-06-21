@@ -3,6 +3,7 @@ package com.hello.learning.wolfpak_assignmen;
 import com.hello.learning.wolfpak_assignmen.util.SystemUiHider;
 
 import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -32,6 +33,15 @@ public class TakePictureActivity extends Activity {
         setContentView(R.layout.activity_take_picture);
 
         imageView = (ImageView) findViewById(R.id.imageView);
+
+        // make the app fullscreen
+        ActionBar actionBar = getActionBar();
+        try {
+            actionBar.hide();
+        }
+        catch (NullPointerException e) {
+            e.printStackTrace();
+        }
 
         // Launch the camera
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
